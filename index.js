@@ -1,30 +1,30 @@
 'use strict';
-var fs = require('fs')
+var fs = require('fs');
 var gutil = require('gulp-util');
 var through = require('through2');
 var mustache = require('mustache');
 
 function reveal(content, option, callback) {
-	var view = {}
-	var slides = ""
+	var view = {};
+	var slides = "";
 	content.split('\n<hr>\n').forEach(function(slide, i) {
-		var state = ''
+		var state = '';
 		if (slide.match(/<h2.*\?<\/h2>/)) {
-			state = ' data-state=q'
+			state = ' data-state=q';
 		}
 		else if (slide.indexOf('<h2') !== -1) {
-			state = ' data-state=title'
+			state = ' data-state=title';
 		}
 		if (i === 0) {
-			view.title = slide.replace(/\<h2.*\>(.*)\<(.|\n)*/g, '$1')
-			state = ' data-state=front'
+			view.title = slide.replace(/\<h2.*\>(.*)\<(.|\n)*/g, '$1');
+			state = ' data-state=front';
 		}
-		slides = slides.concat('\n<section' + state + '>\n' + slide + '\n</section>\n')
+		slides = slides.concat('\n<section' + state + '>\n' + slide + '\n</section>\n');
 	})
-	view.slides = slides
-	var template = fs.readFileSync(__dirname + '/template.mustache', 'utf8')
+	view.slides = slides;
+	var template = fs.readFileSync(__dirname + '/template.mustache', 'utf8');
 	var data = mustache.to_html(template, view);
-	callback(null, data)
+	callback(null, data);
 }
 
 module.exports = function (options) {
