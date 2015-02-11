@@ -7,7 +7,7 @@ var fs = require('fs'),
 function reveal(content, option, callback) {
 	var view = {},
 		slides = '',
-		template = fs.readFileSync(__dirname + '/template.mustache', 'utf8');;
+		template = fs.readFileSync(options.template !== null ? options.template : __dirname + '/template.mustache', 'utf8');
 	content.split('\n<hr>\n').forEach(function(slide, i) {
 		var state = '';
 		if (slide.match(/<h2.*\?<\/h2>/)) {
