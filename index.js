@@ -1,12 +1,13 @@
 'use strict';
-var fs = require('fs');
-var gutil = require('gulp-util');
-var through = require('through2');
-var mustache = require('mustache');
+var fs = require('fs'),
+	gutil = require('gulp-util'),
+	through = require('through2'),
+	mustache = require('mustache');
 
 function reveal(content, option, callback) {
-	var view = {};
-	var slides = "";
+	var view = {},
+		slides = '',
+		template = fs.readFileSync(__dirname + '/template.mustache', 'utf8');;
 	content.split('\n<hr>\n').forEach(function(slide, i) {
 		var state = '';
 		if (slide.match(/<h2.*\?<\/h2>/)) {
@@ -22,7 +23,7 @@ function reveal(content, option, callback) {
 		slides = slides.concat('\n<section' + state + '>\n' + slide + '\n</section>\n');
 	})
 	view.slides = slides;
-	var template = fs.readFileSync(__dirname + '/template.mustache', 'utf8');
+	var 
 	var data = mustache.to_html(template, view);
 	callback(null, data);
 }
