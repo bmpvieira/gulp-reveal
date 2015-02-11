@@ -7,18 +7,20 @@ var fs = require('fs'),
 function reveal(content, option, callback) {
 	var view = {},
 		slides = '',
-		template = fs.readFileSync(option.template !== null ? option.template : __dirname + '/template.mustache', 'utf8');
+		option = option || {},
+		templateFile = option.template !== null ? option.template : __dirname + '/template.mustache',
+		template = fs.readFileSync(templateFile, 'utf8');
 	content.split('\n<hr>\n').forEach(function(slide, i) {
 		var state = '';
 		if (slide.match(/<h2.*\?<\/h2>/)) {
-			state = ' data-state=q';
+			state = ' data-state="q"';
 		}
 		else if (slide.indexOf('<h2') !== -1) {
-			state = ' data-state=title';
+			state = ' data-state="title"';
 		}
 		if (i === 0) {
 			view.title = slide.replace(/\<h2.*\>(.*)\<(.|\n)*/g, '$1');
-			state = ' data-state=front';
+			state = ' data-state="front"';
 		}
 		slides = slides.concat('\n<section' + state + '>\n' + slide + '\n</section>\n');
 	})
