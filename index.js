@@ -23,7 +23,6 @@ function reveal(content, option, callback) {
 		slides = slides.concat('\n<section' + state + '>\n' + slide + '\n</section>\n');
 	})
 	view.slides = slides;
-	var 
 	var data = mustache.to_html(template, view);
 	callback(null, data);
 }
