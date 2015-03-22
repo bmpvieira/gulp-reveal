@@ -16,7 +16,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "standard"
   },
   "main": "index.js",
   "keywords": [
@@ -29,10 +29,8 @@
   "dependencies": {
     "gulp-util": "~2.2.0",
     "mustache": "^0.8.2",
+    "standard": "^3.2.1",
     "through2": "~0.4.0"
-  },
-  "devDependencies": {
-    "mocha": "*"
   },
   "bugs": {
     "url": "https://github.com/bmpvieira/gulp-reveal/issues"
