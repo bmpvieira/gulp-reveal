@@ -1,0 +1,29 @@
+{
+  "name": "gulp-reveal-example",
+  "version": "1.0.0",
+  "description": "Just a minimal example on how to use gulp-reveal. Batteries included (vendor and theme folder).",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bmpvieira/gulp-reveal"
+  },
+  "keywords": [
+    "gulp",
+    "reveal"
+  ],
+  "author": "Bruno Vieira <mail@bmpvieira.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bmpvieira/gulp-reveal/issues"
+  },
+  "homepage": "https://github.com/bmpvieira/gulp-reveal",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-markdown": "^1.2.0",
+    "gulp-reveal": "^1.0.0"
+  },
+  "private": true
+}
